@@ -33,6 +33,10 @@
                       <a href="" class="font-bold">{{ $post->user->name }}</a> <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
                     </div>
                     <p class="mb-2">{{ $post->body }}</p>
+
+                    @if($post->ownedBy(auth()->user()))
+                    <a href="" class="text-blue-500">Delete</a>
+                    @endif
                   </div>
                 @endforeach
                 {{ $posts->links() }}
