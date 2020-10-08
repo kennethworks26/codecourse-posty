@@ -34,13 +34,13 @@
                     </div>
                     <p class="mb-2">{{ $post->body }}</p>
 
-                    @if($post->ownedBy(auth()->user()))
+                    @can('delete', $post)
                       <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-blue-500">Delete</button>
                       </form>
-                    @endif
+                    @endcan
                   </div>
                 @endforeach
                 {{ $posts->links() }}

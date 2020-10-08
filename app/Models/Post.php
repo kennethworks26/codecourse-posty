@@ -12,11 +12,6 @@ class Post extends Model
 
     protected $fillable = ['body'];
 
-    public function ownedBy(User $user)
-    {
-        return $user->id === $this->user_id;
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);
